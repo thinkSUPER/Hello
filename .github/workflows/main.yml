@@ -1,20 +1,21 @@
  name: Deploy and Test Page
-   
-   on:
-     workflow_dispatch:  # Allows manual triggering
-   
-   jobs:
-     build-and-test:
-       runs-on: ubuntu-latest
-       steps:
-       - name: Checkout code
-         uses: actions/checkout@v4
-       
-       - name: Test Content
-         run: |
-           if ! grep -q "Testing AAI hi" index.html; then
-             echo "❌ Test failed - Content not found"
-             exit 1
-           else
-             echo "✅ Test passed - Content found"
-           fi
+
+on:  
+workflow_dispatch:  
+# ← Line 3 (no error here if formatted this way)
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        
+      - name: Test Content
+        run: |
+          if ! grep -q "Testing AAI hi" index.html; then
+            echo "❌ Test failed - Content not found"
+            exit 1
+          else
+            echo "✅ Test passed - Content found"
+          fi
